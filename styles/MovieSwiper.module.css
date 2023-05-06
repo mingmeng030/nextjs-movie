@@ -1,0 +1,27 @@
+.swiperContainer {
+  margin: 0 auto;
+  width: 80vw;
+}
+.swiperTitle {
+  font-size: 2vw;
+}
+.poster {
+  max-width: 100%;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+.poster:hover {
+  transform: scale(1.1) translate(-5px);
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+.swiper-button-prev {
+  background: url(../static/icon/arrow-circle-left.png) no-repeat;
+}
+.swiper-button-next {
+  background: url(../static/icon/right-arrow.png) no-repeat;
+  background-size: 50% auto;
+  background-position: center;
+}
