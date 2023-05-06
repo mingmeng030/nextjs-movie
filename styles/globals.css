@@ -1,3 +1,28 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input {
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  background-color: rgb(255, 255, 255, 0);
+  font-size: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 a {
   text-decoration: none;
 }
@@ -5,4 +30,21 @@ a {
 footer {
   display: flex;
   justify-content: center;
+  padding: 20px 0;
+  color: rgb(119, 119, 119);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+.swiper-button-prev {
+  background: url(../static/icon/left-arrow.png) no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+}
+.swiper-button-next {
+  background: url(../static/icon/right-arrow.png) no-repeat;
+  background-size: 100% auto;
+  background-position: center;
 }

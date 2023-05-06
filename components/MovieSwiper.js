@@ -10,7 +10,12 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-export default function MovieSwiper({ dataList, title }) {
+export default function MovieSwiper({
+  dataList,
+  title,
+  spaceBetween,
+  slidesPerView,
+}) {
   SwiperCore.use([Navigation, Pagination]);
   const swiperRef = useRef();
   const regex = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]+/g;
@@ -23,8 +28,8 @@ export default function MovieSwiper({ dataList, title }) {
           swiperRef.current = swiper;
         }}
         modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={0}
-        slidesPerView={6}
+        spaceBetween={spaceBetween}
+        slidesPerView={slidesPerView}
         loop={true}
         autoplay={false}
         navigation
@@ -54,28 +59,13 @@ export default function MovieSwiper({ dataList, title }) {
                 <img
                   src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
                   className={`${styles.poster}`}
+                  placeholder="no image"
                 />
               </Link>
             </SwiperSlide>
           );
         })}
       </Swiper>
-      <style jsx>
-        {`
-          .swiper-button-next::after,
-          .swiper-button-prev::after {
-            display: none;
-          }
-          .swiper-button-prev {
-            background: url(../static/icon/arrow-circle-left.png) no-repeat;
-          }
-          .swiper-button-next {
-            background: url(../static/icon/right-arrow.png) no-repeat;
-            background-size: 50% auto;
-            background-position: center;
-          }
-        `}
-      </style>
     </div>
   );
 }

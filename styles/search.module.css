@@ -1,0 +1,41 @@
+.container {
+  margin: 0 auto;
+  width: 80%;
+}
+.imgContainer {
+  min-height: 300px;
+}
+
+.poster {
+  max-width: 100%;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.poster:hover {
+  transform: scale(1.1) translate(-5px);
+}
+.title {
+  display: block;
+  width: 200px;
+  font-weight: 700;
+  text-align: center;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  line-height: 1.2em;
+  height: 40px;
+}
+.moviesContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movieLink {
+  padding: 1vw;
+  margin: 0 auto;
+}

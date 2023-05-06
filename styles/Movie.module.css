@@ -1,0 +1,33 @@
+.videoContainer {
+  width: 70vw;
+  height: 50vh;
+  display: block;
+  margin: 0 auto;
+  border: none;
+}
+.container {
+  width: 100%;
+  text-align: center;
+}
+.title {
+  font-size: 20px;
+  font-weight: 700;
+}
+.bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.poster {
+  max-width: 100%;
+  border-radius: 20px;
+  margin: 10px 20px 30px 20px;
+}
+.content {
+  width: 50%;
+  line-height: 25px;
+}
+
+.detailSwiper {
+}

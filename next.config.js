@@ -31,8 +31,15 @@ const nextConfig = {
         source: "/api/search/:keyword",
         destination: `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=:keyword`,
       },
+      {
+        source: "/api/movie/video/:id",
+        destination: `https://api.themoviedb.org/3/movie/:id/videos?api_key=${API_KEY}`,
+      },
+      {
+        source: "/api/movie/similar/:id",
+        destination: `https://api.themoviedb.org/3/movie/:id/similar?api_key=${API_KEY}`,
+      },
     ];
   },
 };
-
 module.exports = nextConfig;

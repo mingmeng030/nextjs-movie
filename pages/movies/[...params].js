@@ -1,44 +1,62 @@
 import Seo from "@/components/Seo";
-import styles from "../../styles/Home.module.css";
+import styles from "../../styles/Movie.module.css";
+import MovieSwiper from "@/components/MovieSwiper";
 
-export default function Detail({ query }) {
+export default function Detail({ query, results, similarResults }) {
   const [title, id, imgPath, content] =
     [query.title, query.id, query.imgPath, query.content] || [];
 
+  const key = results[0] ? results[0].key : null;
+
   return (
-    <div className="container">
+    <div className={`${styles.container}`}>
       <Seo title={title}></Seo>
-      <p className="title">{title} </p>
-      <img src={`https://image.tmdb.org/t/p/w200${imgPath}`} />
-      <p className="content">{content}</p>
-      <style jsx>{`
-        .container {
-          width: 100%;
-          text-align: center;
-        }
-        .title {
-          font-size: 20px;
-          font-weight: 700;
-        }
-        img {
-          max-width: 100%;
-          border-radius: 20px;
-          margin: 0 0 20px 0;
-        }
-        .content {
-          width: 70%;
-          margin: 0 auto;
-        }
-      `}</style>
+      <p className={`${styles.title}`}>{title} </p>
+      {key ? (
+        <iframe
+          className={`${styles.videoContainer}`}
+          src={`https://www.youtube.com/embed/${key}?autoplay=0`}
+        />
+      ) : (
+        <p>There's no trailer to play.</p>
+      )}
+      <div className={`${styles.bottom}`}>
+        <img
+          className={`${styles.poster}`}
+          src={`https://image.tmdb.org/t/p/w200${imgPath}`}
+          placeholder="no image"
+        />
+        <p className={`${styles.content}`}>{content}</p>
+      </div>
+      <div className={`${styles.detailSwiper}`}>
+        <MovieSwiper
+          dataList={similarResults}
+          title={`movies like "${title}"`}
+          spaceBetween={10}
+          slidesPerView={5}
+        ></MovieSwiper>
+      </div>
     </div>
   );
 }
 
 // getServerSideProps : client에서 작동x server에서만 동작
 export async function getServerSideProps({ query }) {
+  const { results } = await (
+    await fetch(`http://localhost:3001/api/movie/video/${query.id}`)
+  ).json();
+
+  const similarResults = (
+    await (
+      await fetch(`http://localhost:3001/api/movie/similar/${query.id}`)
+    ).json()
+  ).results;
+
   return {
     props: {
       query,
+      results,
+      similarResults,
     },
   };
 }

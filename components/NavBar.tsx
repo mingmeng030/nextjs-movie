@@ -17,10 +17,15 @@ export default function NavBar() {
   );
 
   const onClickSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
-    router.push({
-      pathname: `/search/${keyword.replace(regex, "+").replace(/-$/, "")}`,
-      query: { keyword: keyword },
-    });
+    if (keyword == "") {
+      window.alert("Please enter your keyword(s) to search.");
+    } else {
+      router.push({
+        pathname: `/search/${keyword.replace(regex, "+").replace(/-$/, "")}`,
+        query: { keyword: keyword },
+      });
+      setKeyword("");
+    }
   };
 
   return (
@@ -35,9 +40,9 @@ export default function NavBar() {
         </span>
       </Link>
 
-      <div>
+      <div className="button-container">
         <input type="text" value={keyword} onChange={onChangeKeyword}></input>
-        <button onClick={onClickSearch}>검색</button>
+        <button onClick={onClickSearch}>🔎</button>
       </div>
     </nav>
   );

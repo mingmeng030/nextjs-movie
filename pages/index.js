@@ -16,10 +16,14 @@ export default function Home({ popularResults, topRatedResults }) {
       <MovieSwiper
         dataList={popularResults}
         title={"popular movie"}
+        spaceBetween={0}
+        slidesPerView={6}
       ></MovieSwiper>
       <MovieSwiper
         dataList={topRatedResults}
         title={"top rated movie"}
+        spaceBetween={0}
+        slidesPerView={6}
       ></MovieSwiper>
     </div>
   );
