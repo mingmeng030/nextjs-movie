@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "../styles/MovieSwiper.module.css";
+import styles from "./styles/MovieSwiper.module.css";
 import { useRef } from "react";
 import * as type from "./types";
 import { Swiper, SwiperSlide } from "swiper/react";

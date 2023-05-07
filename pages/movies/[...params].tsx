@@ -1,12 +1,17 @@
 import Seo from "@/components/Seo";
-import styles from "../../styles/Movie.module.css";
+import styles from "../../styles/MovieDetail.module.css";
 import MovieSwiper from "@/components/MovieSwiper";
+import * as type from "./types";
 
-export default function Detail({ query, results, similarResults }) {
+export default function Detail({
+  query,
+  videoResults,
+  similarResults,
+}: type.movieDetailProps) {
   const [title, id, imgPath, content] =
     [query.title, query.id, query.imgPath, query.content] || [];
 
-  const key = results[0] ? results[0].key : null;
+  const key = videoResults[0] ? videoResults[0].key : null;
 
   return (
     <div className={`${styles.container}`}>
@@ -21,11 +26,12 @@ export default function Detail({ query, results, similarResults }) {
         <p>There's no video to play.</p>
       )}
       <div className={`${styles.bottom}`}>
-        <img
-          className={`${styles.poster}`}
-          src={`https://image.tmdb.org/t/p/w200${imgPath}`}
-          placeholder="no image"
-        />
+        {`https://image.tmdb.org/t/p/w200${imgPath}` && (
+          <img
+            className={`${styles.poster}`}
+            src={`https://image.tmdb.org/t/p/w200${imgPath}`}
+          />
+        )}
         <p className={`${styles.content}`}>{content}</p>
       </div>
       <div className={`${styles.detailSwiper}`}>
@@ -42,9 +48,11 @@ export default function Detail({ query, results, similarResults }) {
 
 // getServerSideProps : client에서 작동x server에서만 동작
 export async function getServerSideProps({ query }) {
-  const { results } = await (
-    await fetch(`http://localhost:3001/api/movie/video/${query.id}`)
-  ).json();
+  const videoResults = (
+    await (
+      await fetch(`http://localhost:3001/api/movie/video/${query.id}`)
+    ).json()
+  ).results;
 
   const similarResults = (
     await (
@@ -55,7 +63,7 @@ export async function getServerSideProps({ query }) {
   return {
     props: {
       query,
-      results,
+      videoResults,
       similarResults,
     },
   };

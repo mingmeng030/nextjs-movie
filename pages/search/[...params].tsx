@@ -1,9 +1,14 @@
 import Seo from "@/components/Seo";
 import styles from "../../styles/Search.module.css";
 import Link from "next/link";
+import * as type from "./types";
 
 //검색 결과
-export default function searchResult({ results, total_results, keyword }) {
+export default function searchResult({
+  results,
+  total_results,
+  keyword,
+}: type.searchResultProps) {
   const regex = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]+/g;
   const keywordToShow = keyword[0].replace(/[+]/g, " ");
   return (
@@ -30,10 +35,12 @@ export default function searchResult({ results, total_results, keyword }) {
             key={movie.id}
           >
             <div className={`${styles.imgContainer}`}>
-              <img
-                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                className={`${styles.poster}`}
-              />
+              {`https://image.tmdb.org/t/p/w200${movie.poster_path}` && (
+                <img
+                  src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                  className={`${styles.poster}`}
+                />
+              )}
             </div>
 
             <p className={`${styles.title}`}>{movie.original_title}</p>
