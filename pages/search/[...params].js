@@ -1,5 +1,5 @@
 import Seo from "@/components/Seo";
-import styles from "../../styles/search.module.css";
+import styles from "../../styles/Search.module.css";
 import Link from "next/link";
 
 //검색 결과

@@ -18,7 +18,7 @@ export default function Detail({ query, results, similarResults }) {
           src={`https://www.youtube.com/embed/${key}?autoplay=0`}
         />
       ) : (
-        <p>There's no trailer to play.</p>
+        <p>There's no video to play.</p>
       )}
       <div className={`${styles.bottom}`}>
         <img
@@ -33,7 +33,7 @@ export default function Detail({ query, results, similarResults }) {
           dataList={similarResults}
           title={`movies like "${title}"`}
           spaceBetween={10}
-          slidesPerView={5}
+          slidesPerView={7}
         ></MovieSwiper>
       </div>
     </div>

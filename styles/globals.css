@@ -38,13 +38,16 @@ footer {
 .swiper-button-prev::after {
   display: none;
 }
+
 .swiper-button-prev {
   background: url(../static/icon/left-arrow.png) no-repeat;
-  background-size: 100% auto;
-  background-position: center;
 }
 .swiper-button-next {
   background: url(../static/icon/right-arrow.png) no-repeat;
-  background-size: 100% auto;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  opacity: 0.7;
+  background-size: 70% auto;
   background-position: center;
 }

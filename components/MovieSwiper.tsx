@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "../styles/MovieSwiper.module.css";
 import { useRef } from "react";
-
+import * as type from "./types";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 
@@ -15,9 +15,9 @@ export default function MovieSwiper({
   title,
   spaceBetween,
   slidesPerView,
-}) {
+}: type.MovieSwiperProps) {
   SwiperCore.use([Navigation, Pagination]);
-  const swiperRef = useRef();
+  const swiperRef = useRef<SwiperCore>();
   const regex = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]+/g;
 
   return (

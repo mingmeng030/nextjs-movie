@@ -13,15 +13,3 @@
 .poster:hover {
   transform: scale(1.1) translate(-5px);
 }
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  display: none;
-}
-.swiper-button-prev {
-  background: url(../static/icon/arrow-circle-left.png) no-repeat;
-}
-.swiper-button-next {
-  background: url(../static/icon/right-arrow.png) no-repeat;
-  background-size: 50% auto;
-  background-position: center;
-}
