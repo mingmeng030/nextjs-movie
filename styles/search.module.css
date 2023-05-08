@@ -1,13 +1,19 @@
-.container {
-  margin: 0 auto;
+/* .container {
   width: 80%;
-}
-.imgContainer {
+  ->w-4/5
+} */
+/* .imgContainer {
   min-height: 300px;
   background-color: rgb(60, 60, 60);
   border-radius: 10px;
   display: flex;
-}
+
+/* background-color: rgb(68 64 60); */
+/* min-h-[300px]
+bg-stone-700
+rounded-xl
+flex 
+}*/
 
 .poster {
   max-width: 100%;
@@ -32,13 +38,4 @@
   word-wrap: break-word;
   line-height: 1.2em;
   height: 40px;
-}
-/* .moviesContainer {
-  display: flex;
-  flex-wrap: wrap;
-} */
-
-.movieLink {
-  padding: 1vw;
-  margin: 0 auto;
 }

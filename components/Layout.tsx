@@ -2,22 +2,20 @@ import NavBar from "./NavBar";
 
 export default function Layout({ children }) {
   return (
-    <div className="top-container">
+    <div className="bg-black">
       <NavBar />
-      <div className="content">{children}</div>
+      <div className="flex items-center	justify-center">{children}</div>
       <footer>nextjs introduction by mingmeng</footer>
-      <style jsx>
+      {/* <style jsx>
         {`
-          .top-container {
-            background-color: black;
-          }
           .content {
             display: flex;
             align-items: center;
             justify-content: center;
           }
+          flex items-center	justify-center
         `}
-      </style>
+      </style> */}
     </div>
   );
 }

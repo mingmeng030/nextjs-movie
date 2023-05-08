@@ -29,7 +29,7 @@ export default function NavBar() {
   };
 
   return (
-    <nav className={`${styles.nav}`}>
+    <nav className="flexcenter pt-[50px] pb-[20px]">
       <Link href="/" className={`${styles.link}`}>
         <span
           className={`${
@@ -50,7 +50,7 @@ export default function NavBar() {
         </span>
       </Link>
 
-      <div className="button-container">
+      <div className="flexcenter">
         <input type="text" value={keyword} onChange={onChangeKeyword}></input>
         <button onClick={onClickSearch}>🔎</button>
       </div>

@@ -21,8 +21,8 @@ export default function MovieSwiper({
   const regex = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]+/g;
 
   return (
-    <div className={`${styles.swiperContainer}`}>
-      <p className={`${styles.swiperTitle}`}>{title}</p>
+    <div className="py-[20px] w-[70vw] margincenter">
+      <p className="text-[20px]">{title}</p>
       <Swiper
         onSwiper={(swiper) => {
           swiperRef.current = swiper;

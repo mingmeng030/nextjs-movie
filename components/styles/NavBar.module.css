@@ -1,20 +1,30 @@
-.nav {
+@tailwind components;
+
+@layer components {
+  .link {
+    @apply font-extrabold text-[25px] mx-[20px];
+  }
+
+  .active {
+    @apply text-white;
+  }
+
+  .default {
+    @apply text-zinc-700;
+  }
+}
+
+/* .nav {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 50px 0 20px 0;
-}
 
-.link {
+  flexcenter pt-[50px] pb-[20px
+} */
+
+/* .link {
   font-weight: 800;
   font-size: 25px;
   margin: 0 20px;
-}
-
-.active {
-  color: rgb(230, 230, 230);
-}
-
-.default {
-  color: rgb(63, 63, 63);
-}
+} */

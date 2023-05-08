@@ -12,15 +12,15 @@ export default function searchResult({
   const regex = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]+/g;
   const keywordToShow = keyword[0].replace(/[+]/g, " ");
   return (
-    <div className={`${styles.container}`}>
+    <div className="margincenter w-4/5">
       <Seo title={"search result"}></Seo>
       <p>"{keywordToShow}" 검색 결과 입니다.</p>
       <p>총 {total_results}개의 검색 결과가 있습니다.</p>
 
-      <div className={`${styles.moviesContainer}`}>
+      <div className="flexwrap">
         {results?.map((movie) => (
           <Link
-            className={`${styles.movieLink}`}
+            className="px-2 py-4 margincenter"
             href={{
               pathname: `/movies/${movie.title
                 .replace(regex, "+")
@@ -34,7 +34,7 @@ export default function searchResult({
             }}
             key={movie.id}
           >
-            <div className={`${styles.imgContainer}`}>
+            <div className="min-h-[300px] bg-stone-700 rounded-xl flex">
               {`https://image.tmdb.org/t/p/w200${movie.poster_path}` && (
                 <img
                   src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
