@@ -1,6 +1,6 @@
-import Seo from "@/components/Seo";
+import Seo from "../../components/Seo";
+import MovieSwiper from "../../components/MovieSwiper";
 import styles from "../../styles/MovieDetail.module.css";
-import MovieSwiper from "@/components/MovieSwiper";
 import * as type from "./types";
 
 export default function Detail({

@@ -1,4 +1,4 @@
-import Seo from "@/components/Seo";
+import Seo from "../../components/Seo";
 import styles from "../../styles/Search.module.css";
 import Link from "next/link";
 import * as type from "./types";

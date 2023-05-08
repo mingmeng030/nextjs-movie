@@ -1,6 +1,6 @@
 .videoContainer {
-  width: 70vw;
-  height: 50vh;
+  width: 60vw;
+  height: 40vw;
   display: block;
   margin: 0 auto;
   border: none;
@@ -17,6 +17,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 80%;
+  margin: 0 auto;
   margin-top: 50px;
 }
 .poster {

@@ -40,6 +40,16 @@ export default function NavBar() {
         </span>
       </Link>
 
+      <Link href="/genre" className={`${styles.link}`}>
+        <span
+          className={`${
+            router.pathname == "/genre" ? styles.active : styles.default
+          }`}
+        >
+          Genre
+        </span>
+      </Link>
+
       <div className="button-container">
         <input type="text" value={keyword} onChange={onChangeKeyword}></input>
         <button onClick={onClickSearch}>🔎</button>
