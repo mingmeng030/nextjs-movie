@@ -20,7 +20,7 @@ export default function MovieSwiper({
   SwiperCore.use([Navigation, Pagination]);
   const swiperRef = useRef<SwiperCore>();
   const regex = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]+/g;
-
+  const posts = [];
   return (
     <div className="py-[20px] w-[70vw] margincenter">
       <p className="text-[20px]">{title}</p>
@@ -34,11 +34,12 @@ export default function MovieSwiper({
         loop={true}
         autoplay={false}
         navigation
-        pagination={{
-          el: ".swiper-pagination",
-          clickable: true,
-          type: "bullets",
-        }}
+        scrollbar={{ draggable: true }}
+
+        // pagination={{
+        //   clickable: true,
+        //   type: "bullets",
+        // }}
       >
         {dataList?.map((item, i) => {
           return (

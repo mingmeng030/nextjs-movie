@@ -7,3 +7,8 @@
 .poster:hover {
   transform: scale(1.1) translate(0);
 }
+
+.swiper-scrollbar .swiper-scrollbar-horizontal.swiper-scrollbar {
+  background-color: white;
+  background: white;
+}

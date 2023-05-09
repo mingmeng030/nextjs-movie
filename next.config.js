@@ -3,16 +3,6 @@ const API_KEY = process.env.API_KEY;
 
 const nextConfig = {
   reactStrictMode: true,
-  // async redirects() {
-  //   return [
-  //     {
-  //       // source로 이동하면 form으로 가도록
-  //       source: "/*",
-  //       destination: "/",
-  //       permanent: false,
-  //     },
-  //   ];
-  // },
   async rewrites() {
     return [
       {
