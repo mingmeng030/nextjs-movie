@@ -1,14 +1,15 @@
 import Link from "next/link";
-import styles from "./styles/MovieSwiper.module.css";
 import { useRef } from "react";
-import * as type from "./types";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+
+import * as type from "./types";
+import styles from "./styles/MovieSwiper.module.css";
 
 export default function MovieSwiper({
   dataList,

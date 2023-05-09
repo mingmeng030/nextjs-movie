@@ -1,6 +1,5 @@
 import Seo from "../components/Seo";
 import MovieSwiper from "../components/MovieSwiper";
-import styles from "../styles/Home.module.css";
 import * as type from "./types";
 
 import "swiper/css";
@@ -12,7 +11,7 @@ import "swiper/css/scrollbar";
 //function 명은 상관없고 파일명이 url이 된다.
 export default function Genre({ genreLists }: type.genreProps) {
   return (
-    <div className={`${styles.indexContainer}`}>
+    <div>
       <Seo title={"Genre"}></Seo>
       {genreLists.map((item) => (
         <MovieSwiper

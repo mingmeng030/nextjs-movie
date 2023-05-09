@@ -14,34 +14,32 @@ export default function Detail({
   const key = videoResults[0] ? videoResults[0].key : null;
 
   return (
-    <div className={`${styles.container}`}>
+    <div className="w-full text-center">
       <Seo title={title}></Seo>
-      <p className={`${styles.title}`}>{title} </p>
+      <p className="text-[20px] font-bold mb-[10px]">{title} </p>
       {key ? (
         <iframe
-          className={`${styles.videoContainer}`}
+          className="margincenter block w-[60vw] h-[40vw]"
           src={`https://www.youtube.com/embed/${key}?autoplay=0`}
         />
       ) : (
         <p>There's no video to play.</p>
       )}
-      <div className={`${styles.bottom}`}>
+      <div className="flexcenter margincenter mt-[50px] w-4/5">
         {`https://image.tmdb.org/t/p/w200${imgPath}` && (
           <img
             className={`${styles.poster}`}
             src={`https://image.tmdb.org/t/p/w200${imgPath}`}
           />
         )}
-        <p className={`${styles.content}`}>{content}</p>
+        <p className="leading-[25px] w-1/2">{content}</p>
       </div>
-      <div className={`${styles.detailSwiper}`}>
-        <MovieSwiper
-          dataList={similarResults}
-          title={`movies like "${title}"`}
-          spaceBetween={10}
-          slidesPerView={7}
-        ></MovieSwiper>
-      </div>
+      <MovieSwiper
+        dataList={similarResults}
+        title={`movies like "${title}"`}
+        spaceBetween={10}
+        slidesPerView={7}
+      ></MovieSwiper>
     </div>
   );
 }

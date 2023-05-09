@@ -4,11 +4,9 @@
   .link {
     @apply font-extrabold text-[25px] mx-[20px];
   }
-
   .active {
     @apply text-white;
   }
-
   .default {
     @apply text-zinc-700;
   }

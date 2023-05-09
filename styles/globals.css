@@ -4,7 +4,7 @@
 
 @layer components {
   .flexcenter {
-    @apply flex items-center	justify-center;
+    @apply flex items-center justify-center;
   }
   .margincenter {
     @apply mx-auto my-0;

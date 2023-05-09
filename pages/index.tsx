@@ -1,6 +1,5 @@
 import Seo from "../components/Seo";
 import MovieSwiper from "../components/MovieSwiper";
-import styles from "../styles/Home.module.css";
 import * as type from "./types";
 
 import "swiper/css";
@@ -16,7 +15,7 @@ export default function Home({
   upcomingResults,
 }: type.homeProps) {
   return (
-    <div className={`${styles.indexContainer}`}>
+    <div>
       <Seo title={"Home"}></Seo>
       <MovieSwiper
         dataList={popularResults}
