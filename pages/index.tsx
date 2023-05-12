@@ -2,13 +2,6 @@ import Seo from "../components/Seo";
 import MovieSwiper from "../components/MovieSwiper";
 import * as type from "./types";
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-
-//export default 이어야 url로써 사용가능
-//function 명은 상관없고 파일명이 url이 된다.
 export default function Home({
   popularResults,
   topRatedResults,

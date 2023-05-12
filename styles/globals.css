@@ -62,3 +62,7 @@ footer {
   background-size: 70% auto;
   background-position: center;
 }
+
+.swiper-scrollbar.swiper-scrollbar-horizontal {
+  background: gray;
+}

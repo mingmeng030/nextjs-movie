@@ -2,10 +2,9 @@ import Link from "next/link";
 import { useRef } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import SwiperCore, { Navigation, Scrollbar } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 import * as type from "./types";
@@ -17,10 +16,10 @@ export default function MovieSwiper({
   spaceBetween,
   slidesPerView,
 }: type.MovieSwiperProps) {
-  SwiperCore.use([Navigation, Pagination]);
+  SwiperCore.use([Navigation]);
   const swiperRef = useRef<SwiperCore>();
   const regex = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]+/g;
-  const posts = [];
+
   return (
     <div className="py-[20px] w-[70vw] margincenter">
       <p className="text-[20px]">{title}</p>
@@ -28,18 +27,13 @@ export default function MovieSwiper({
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        modules={[Navigation, Scrollbar]}
         spaceBetween={spaceBetween}
         slidesPerView={slidesPerView}
         loop={true}
         autoplay={false}
         navigation
         scrollbar={{ draggable: true }}
-
-        // pagination={{
-        //   clickable: true,
-        //   type: "bullets",
-        // }}
       >
         {dataList?.map((item, i) => {
           return (

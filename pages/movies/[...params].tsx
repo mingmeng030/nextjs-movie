@@ -28,7 +28,7 @@ export default function Detail({
       <div className="flexcenter margincenter mt-[50px] w-4/5">
         {`https://image.tmdb.org/t/p/w200${imgPath}` && (
           <img
-            className={`${styles.poster}`}
+            className="max-w-full rounded-[20px] mt-[10px] mx-[20px] mb-[30px]"
             src={`https://image.tmdb.org/t/p/w200${imgPath}`}
           />
         )}
