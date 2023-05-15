@@ -32,7 +32,6 @@ export default function Home({
   );
 }
 
-// getServerSideProps : client에서 작동x server에서만 동작
 export async function getServerSideProps() {
   const popularResults = (
     await (await fetch(`http://localhost:3001/api/movies/popular`)).json()

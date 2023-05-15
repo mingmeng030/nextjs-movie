@@ -28,8 +28,8 @@ const nextConfig = {
         destination: `https://api.themoviedb.org/3/movie/:id?api_key=${API_KEY}`,
       },
       {
-        source: "/api/search/:keyword",
-        destination: `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=:keyword`,
+        source: "/api/search/:keyword/:page",
+        destination: `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=:keyword&page=:page`,
       },
       {
         source: "/api/movie/video/:id",
