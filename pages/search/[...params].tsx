@@ -1,7 +1,8 @@
-import { useInfiniteQuery } from "react-query";
+import { useInfiniteQuery, useQuery, useQueryClient } from "react-query";
 import { useObserver } from "./useObsever";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 import Seo from "../../components/Seo";
 import styles from "../../styles/Search.module.css";
@@ -13,21 +14,39 @@ export default function searchResult({
   total_results,
   keyword,
 }: type.searchesultProps) {
+  const router = useRouter();
   const regex = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]+/g;
-  const keywordToShow = keyword[0].replace(/[+]/g, " ");
+  const keywordToShow = router.query.params[0].replace(/[+]/g, " ");
   const bottom = useRef(null);
 
-  useEffect(() => {
-    console.log(keyword[0]);
-    getRequestsQuery.remove();
-    getRequestsQuery.refetch().then();
-    console.log(getRequestsQuery.refetch);
-  }, [keyword]);
+  const fetchMovies = ({ pageParam = 1 }: type.fetchMovieProps) =>
+    axios
+      .get(
+        `http://localhost:3001/api/search/${router.query.params[0].replace(
+          /[+]/g,
+          " "
+        )}/${pageParam}`
+      )
+      .then((res) => {
+        return res;
+      });
+  // const queryClient = useQueryClient();
+  // const useQueryData = useQuery("movielist", fetchMovies);
+  // useEffect(() => {
+  //   const newData = useQueryData.data;
+  //   queryClient.setQueryData(["movielist"], newData);
+  // }, [router.query.params[0]]);
 
-  const getRequestsQuery = useInfiniteQuery(
-    "list",
-    ({ pageParam = 1 }) =>
-      axios.get(`http://localhost:3001/api/search/${keyword[0]}/${pageParam}`),
+  const { data, fetchNextPage, status, refetch } = useInfiniteQuery(
+    ["movielist"],
+    fetchMovies,
+    // ({ pageParam = 1 }) =>
+    //   axios.get(
+    //     `http://localhost:3001/api/search/${router.query.params[0].replace(
+    //       /[+]/g,
+    //       " "
+    //     )}/${pageParam}`
+    //   )
     {
       getNextPageParam: (lastPage) => {
         const page = lastPage.data.page;
@@ -37,8 +56,7 @@ export default function searchResult({
     }
   );
 
-  const onIntersect = ([entry]) =>
-    entry.isIntersecting && getRequestsQuery.fetchNextPage();
+  const onIntersect = ([entry]) => entry.isIntersecting && fetchNextPage();
 
   useObserver({
     target: bottom,
@@ -48,16 +66,15 @@ export default function searchResult({
   return (
     <div className="margincenter w-4/5">
       <Seo title={"search result"}></Seo>
-      {getRequestsQuery.status === "loading" && <p>불러오는 중</p>}
-      {getRequestsQuery.status === "error" && <p>불러오기 실패</p>}
-
-      {getRequestsQuery.status === "success" && getRequestsQuery.data && (
+      {status === "loading" && <p>불러오는 중</p>}
+      {status === "error" && <p>불러오기 실패</p>}
+      {status === "success" && data && (
         <>
           <p>"{keywordToShow}" 검색 결과 입니다.</p>
           <p>총 {total_results}개의 검색 결과가 있습니다.</p>
 
           <div className="flexwrap">
-            {getRequestsQuery.data.pages?.map((page) => {
+            {data.pages?.map((page) => {
               const movieList: commonType.apiResult[] = page.data.results;
               return movieList.map((movie) => {
                 return (

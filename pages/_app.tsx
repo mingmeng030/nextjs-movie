@@ -6,7 +6,8 @@ import "../styles/globals.css";
 import Layout from "../components/Layout";
 
 export default function App({ Component, pageProps }) {
-  const [queryClient] = useState(() => new QueryClient());
+  // const [queryClient] = useState(() => new QueryClient());
+  const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
