@@ -3,6 +3,7 @@ import { useObserver } from "./useObsever";
 import { useRef, useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { config } from "../../static/config";
 
 import Seo from "../../components/Seo";
 import styles from "../../styles/Search.module.css";
@@ -21,12 +22,7 @@ export default function searchResult({
 
   const fetchMovies = ({ pageParam = 1 }: type.fetchMovieProps) =>
     axios
-      .get(
-        `http://localhost:3001/api/search/${router.query.params[0].replace(
-          /[+]/g,
-          " "
-        )}/${pageParam}`
-      )
+      .get(`${config.api}/api/search/${keywordToShow}/${pageParam}`)
       .then((res) => {
         return res;
       });
@@ -119,7 +115,7 @@ export default function searchResult({
 export async function getServerSideProps({ params }) {
   const keyword = params.params;
   const { total_results } = await (
-    await fetch(`http://localhost:3001/api/search/${keyword}/1`)
+    await fetch(`${config.api}/api/search/${keyword}/1`)
   ).json();
 
   return {

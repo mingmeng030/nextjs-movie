@@ -7,7 +7,7 @@ export interface homeProps {
 }
 
 export interface genreProps {
-  genreLists: {
+  genreMovieLists: {
     list: commonType.apiResult[];
     title: string;
   }[];

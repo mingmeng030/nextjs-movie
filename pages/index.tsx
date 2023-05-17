@@ -1,6 +1,7 @@
 import Seo from "../components/Seo";
 import MovieSwiper from "../components/MovieSwiper";
 import * as type from "./types";
+import { config } from "../static/config";
 
 export default function Home({
   popularResults,
@@ -34,15 +35,15 @@ export default function Home({
 
 export async function getServerSideProps() {
   const popularResults = (
-    await (await fetch(`http://localhost:3001/api/movies/popular`)).json()
+    await (await fetch(`${config.api}/api/movies/popular`)).json()
   ).results;
 
   const topRatedResults = (
-    await (await fetch(`http://localhost:3001/api/movies/topRated`)).json()
+    await (await fetch(`${config.api}/api/movies/topRated`)).json()
   ).results;
 
   const upcomingResults = (
-    await (await fetch(`http://localhost:3001/api/movies/upcoming`)).json()
+    await (await fetch(`${config.api}/api/movies/upcoming`)).json()
   ).results;
 
   return {

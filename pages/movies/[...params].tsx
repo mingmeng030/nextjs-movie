@@ -1,7 +1,7 @@
 import Seo from "../../components/Seo";
 import MovieSwiper from "../../components/MovieSwiper";
-import styles from "../../styles/MovieDetail.module.css";
 import * as type from "./types";
+import { config } from "../../static/config";
 
 export default function Detail({
   query,
@@ -47,15 +47,11 @@ export default function Detail({
 // getServerSideProps : client에서 작동x server에서만 동작
 export async function getServerSideProps({ query }) {
   const videoResults = (
-    await (
-      await fetch(`http://localhost:3001/api/movie/video/${query.id}`)
-    ).json()
+    await (await fetch(`${config.api}/api/movie/video/${query.id}`)).json()
   ).results;
 
   const similarResults = (
-    await (
-      await fetch(`http://localhost:3001/api/movie/similar/${query.id}`)
-    ).json()
+    await (await fetch(`${config.api}/api/movie/similar/${query.id}`)).json()
   ).results;
 
   return {
