@@ -1,6 +1,8 @@
-import { useInfiniteQuery, useQuery, useQueryClient } from "react-query";
+import { useInfiniteQuery } from "react-query";
 import { useObserver } from "./useObsever";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
+// import { useEffect, useState } from "react";
+// import { useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { config } from "../../static/config";
@@ -11,10 +13,7 @@ import Link from "next/link";
 import * as type from "./types";
 import * as commonType from "../../types/commonType";
 
-export default function searchResult({
-  total_results,
-  keyword,
-}: type.searchesultProps) {
+export default function searchResult() {
   const router = useRouter();
   const regex = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]+/g;
   const keywordToShow = router.query.params[0].replace(/[+]/g, " ");
@@ -24,6 +23,7 @@ export default function searchResult({
     axios
       .get(`${config.api}/api/search/${keywordToShow}/${pageParam}`)
       .then((res) => {
+        console.log(res);
         return res;
       });
   // const queryClient = useQueryClient();
@@ -67,8 +67,7 @@ export default function searchResult({
       {status === "success" && data && (
         <>
           <p>"{keywordToShow}" 검색 결과 입니다.</p>
-          <p>총 {total_results}개의 검색 결과가 있습니다.</p>
-
+          <p>총 {data.pages[0].data.total_results}개의 검색 결과가 있습니다.</p>
           <div className="flexwrap">
             {data.pages?.map((page) => {
               const movieList: commonType.apiResult[] = page.data.results;
@@ -109,19 +108,4 @@ export default function searchResult({
       <div ref={bottom} />
     </div>
   );
-}
-
-// getServerSideProps : client에서 작동x server에서만 동작
-export async function getServerSideProps({ params }) {
-  const keyword = params.params;
-  const { total_results } = await (
-    await fetch(`${config.api}/api/search/${keyword}/1`)
-  ).json();
-
-  return {
-    props: {
-      total_results,
-      keyword,
-    },
-  };
 }

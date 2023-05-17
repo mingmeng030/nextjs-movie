@@ -4,7 +4,7 @@ import * as type from "./types";
 export default function Seo({ title }: type.SeoProps) {
   return (
     <Head>
-      <title>{title} | Next Movies</title>
+      <title>{title}|Next Movies</title>
     </Head>
   );
 }
