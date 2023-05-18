@@ -43,8 +43,6 @@ export default function Detail({
     </div>
   );
 }
-
-// getServerSideProps : client에서 작동x server에서만 동작
 export async function getServerSideProps({ query }) {
   const videoResults = (
     await (await fetch(`${config.api}/api/movie/video/${query.id}`)).json()

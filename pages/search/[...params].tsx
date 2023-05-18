@@ -1,17 +1,15 @@
 import { useInfiniteQuery } from "react-query";
 import { useObserver } from "./useObsever";
 import { useRef } from "react";
-// import { useEffect, useState } from "react";
-// import { useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { config } from "../../static/config";
+import Link from "next/link";
 
 import Seo from "../../components/Seo";
 import styles from "../../styles/Search.module.css";
-import Link from "next/link";
 import * as type from "./types";
 import * as commonType from "../../types/commonType";
+import { config } from "../../static/config";
 
 export default function searchResult() {
   const router = useRouter();
@@ -23,26 +21,12 @@ export default function searchResult() {
     axios
       .get(`${config.api}/api/search/${keywordToShow}/${pageParam}`)
       .then((res) => {
-        console.log(res);
         return res;
       });
-  // const queryClient = useQueryClient();
-  // const useQueryData = useQuery("movielist", fetchMovies);
-  // useEffect(() => {
-  //   const newData = useQueryData.data;
-  //   queryClient.setQueryData(["movielist"], newData);
-  // }, [router.query.params[0]]);
 
-  const { data, fetchNextPage, status, refetch } = useInfiniteQuery(
+  const { data, fetchNextPage, status } = useInfiniteQuery(
     ["movielist"],
     fetchMovies,
-    // ({ pageParam = 1 }) =>
-    //   axios.get(
-    //     `http://localhost:3001/api/search/${router.query.params[0].replace(
-    //       /[+]/g,
-    //       " "
-    //     )}/${pageParam}`
-    //   )
     {
       getNextPageParam: (lastPage) => {
         const page = lastPage.data.page;
@@ -62,12 +46,12 @@ export default function searchResult() {
   return (
     <div className="margincenter w-4/5">
       <Seo title={"search result"}></Seo>
-      {status === "loading" && <p>불러오는 중</p>}
-      {status === "error" && <p>불러오기 실패</p>}
+      {status === "loading" && <p>loading..</p>}
+      {status === "error" && <p>loading fail.</p>}
       {status === "success" && data && (
         <>
-          <p>"{keywordToShow}" 검색 결과 입니다.</p>
-          <p>총 {data.pages[0].data.total_results}개의 검색 결과가 있습니다.</p>
+          <p>Search results for "{keywordToShow}"</p>
+          <p>total : {data.pages[0].data.total_results}</p>
           <div className="flexwrap">
             {data.pages?.map((page) => {
               const movieList: commonType.apiResult[] = page.data.results;

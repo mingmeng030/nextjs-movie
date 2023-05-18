@@ -22,7 +22,7 @@ export default function MovieSwiper({
 
   return (
     <div className="py-[20px] w-[70vw] margincenter">
-      <p className="text-[20px]">{title}</p>
+      <h1 className="text-[20px]">{title}</h1>
       <Swiper
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
