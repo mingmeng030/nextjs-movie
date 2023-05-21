@@ -13,7 +13,6 @@ import { config } from "../../static/config";
 
 export default function searchResult() {
   const router = useRouter();
-  const regex = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]+/g;
   const keywordToShow = router.query.params[0].replace(/[+]/g, " ");
   const bottom = useRef(null);
 
@@ -53,7 +52,7 @@ export default function searchResult() {
           <p>Search results for "{keywordToShow}"</p>
           <p>total : {data.pages[0].data.total_results}</p>
           <div className="flexwrap">
-            {data.pages?.map((page) => {
+            {data.pages.map((page) => {
               const movieList: commonType.apiResult[] = page.data.results;
               return movieList.map((movie) => {
                 return (
@@ -61,7 +60,7 @@ export default function searchResult() {
                     className="px-2 py-4 margincenter"
                     href={{
                       pathname: `/movies/${movie.title
-                        .replace(regex, "+")
+                        .replace(config.regex, "+")
                         .replace(/-$/, "")}/${movie.id}`,
                       query: {
                         title: movie.title,
@@ -73,14 +72,13 @@ export default function searchResult() {
                     key={movie.id}
                   >
                     <div className="min-h-[300px] bg-stone-700 rounded-xl flex">
-                      {`https://image.tmdb.org/t/p/w200${movie.poster_path}` && (
+                      {`${config.imgUrl}${movie.poster_path}` && (
                         <img
-                          src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                          src={`${config.imgUrl}${movie.poster_path}`}
                           className={`${styles.poster}`}
                         />
                       )}
                     </div>
-
                     <p className={`${styles.title}`}>{movie.original_title}</p>
                   </Link>
                 );

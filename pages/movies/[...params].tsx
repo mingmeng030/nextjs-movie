@@ -20,19 +20,19 @@ export default function Detail({
       {key ? (
         <iframe
           className="margincenter block w-[60vw] h-[40vw]"
-          src={`https://www.youtube.com/embed/${key}?autoplay=0`}
+          src={`${config.videoUrl}${key}?autoplay=0`}
         />
       ) : (
         <p>There's no video to play.</p>
       )}
       <div className="flexcenter margincenter mt-[50px] w-4/5">
-        {`https://image.tmdb.org/t/p/w200${imgPath}` && (
+        {`${config.imgUrl}${imgPath}` && (
           <img
             className="max-w-full rounded-[20px] mt-[10px] mx-[20px] mb-[30px]"
-            src={`https://image.tmdb.org/t/p/w200${imgPath}`}
+            src={`${config.imgUrl}${imgPath}`}
           />
         )}
-        <p className="leading-[25px] w-1/2">{content}</p>
+        <p className="leading-[25px] w-1/2 text-[1.2vw]">{content}</p>
       </div>
       <MovieSwiper
         dataList={similarResults}

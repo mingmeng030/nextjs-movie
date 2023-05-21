@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/scrollbar";
 
+import { config } from "../static/config";
 import * as type from "./types";
 import styles from "./styles/MovieSwiper.module.css";
 
@@ -18,7 +19,6 @@ export default function MovieSwiper({
 }: type.MovieSwiperProps) {
   SwiperCore.use([Navigation]);
   const swiperRef = useRef<SwiperCore>();
-  const regex = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]+/g;
 
   return (
     <div className="py-[20px] w-[70vw] margincenter">
@@ -35,13 +35,13 @@ export default function MovieSwiper({
         navigation
         scrollbar={{ draggable: true }}
       >
-        {dataList?.map((item, i) => {
+        {dataList?.map((item) => {
           return (
             <SwiperSlide>
               <Link
                 href={{
                   pathname: `/movies/${item.title
-                    .replace(regex, "+")
+                    .replace(config.regex, "+")
                     .replace(/-$/, "")}/${item.id}`,
                   query: {
                     title: item.title,
@@ -53,7 +53,7 @@ export default function MovieSwiper({
                 key={item.id}
               >
                 <img
-                  src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
+                  src={`${config.imgUrl}${item.poster_path}`}
                   className={`${styles.poster}`}
                   placeholder="no image"
                 />

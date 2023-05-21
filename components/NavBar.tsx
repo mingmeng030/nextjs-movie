@@ -1,13 +1,14 @@
 import Link from "next/link";
+import React from "react";
 import { useRouter } from "next/router";
 import { useState, useCallback } from "react";
+
 import styles from "./styles/NavBar.module.css";
-import React from "react";
+import { config } from "../static/config";
 
 export default function NavBar() {
   const router = useRouter();
   const [keyword, setKeyword] = useState("");
-  const regex = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]+/g;
 
   const onChangeKeyword = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +22,9 @@ export default function NavBar() {
       window.alert("Please enter your keyword(s) to search.");
     } else {
       router.push({
-        pathname: `/search/${keyword.replace(regex, "+").replace(/-$/, "")}`,
+        pathname: `/search/${keyword
+          .replace(config.regex, "+")
+          .replace(/-$/, "")}`,
         query: { keyword: keyword },
       });
       setKeyword("");
