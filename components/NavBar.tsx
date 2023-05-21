@@ -18,9 +18,8 @@ export default function NavBar() {
   );
 
   const onClickSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (keyword == "") {
-      window.alert("Please enter your keyword(s) to search.");
-    } else {
+    if (keyword == "") window.alert("Please enter keyword(s) to search.");
+    else {
       router.push({
         pathname: `/search/${keyword
           .replace(config.regex, "+")

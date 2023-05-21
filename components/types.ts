@@ -1,7 +1,7 @@
 import * as commonType from "../types/commonType";
 
 export interface MovieSwiperProps {
-  dataList: commonType.apiResult[];
+  movieList: commonType.apiResult[];
   title: string;
   spaceBetween: number;
   slidesPerView: number;

@@ -12,19 +12,19 @@ export default function Home({
     <div>
       <Seo title={"Home"}></Seo>
       <MovieSwiper
-        dataList={popularResults}
+        movieList={popularResults}
         title={"popular movie"}
         spaceBetween={0}
         slidesPerView={6}
       ></MovieSwiper>
       <MovieSwiper
-        dataList={topRatedResults}
+        movieList={topRatedResults}
         title={"top rated movie"}
         spaceBetween={0}
         slidesPerView={6}
       ></MovieSwiper>
       <MovieSwiper
-        dataList={upcomingResults}
+        movieList={upcomingResults}
         title={"upcoming movie"}
         spaceBetween={0}
         slidesPerView={6}

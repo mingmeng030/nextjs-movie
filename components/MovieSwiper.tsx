@@ -10,9 +10,8 @@ import "swiper/css/scrollbar";
 import { config } from "../static/config";
 import * as type from "./types";
 import styles from "./styles/MovieSwiper.module.css";
-
 export default function MovieSwiper({
-  dataList,
+  movieList,
   title,
   spaceBetween,
   slidesPerView,
@@ -35,7 +34,7 @@ export default function MovieSwiper({
         navigation
         scrollbar={{ draggable: true }}
       >
-        {dataList?.map((item) => {
+        {movieList?.map((item) => {
           return (
             <SwiperSlide>
               <Link
@@ -55,7 +54,6 @@ export default function MovieSwiper({
                 <img
                   src={`${config.imgUrl}${item.poster_path}`}
                   className={`${styles.poster}`}
-                  placeholder="no image"
                 />
               </Link>
             </SwiperSlide>

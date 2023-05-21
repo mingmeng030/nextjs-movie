@@ -8,10 +8,10 @@
   transform: scale(1.1) translate(0);
 }
 .title {
-  display: block;
   width: 200px;
-  line-height: 1.2em;
   height: 40px;
+  display: block;
+  line-height: 1.2em;
   font-weight: 700;
   text-align: center;
 

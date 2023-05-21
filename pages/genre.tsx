@@ -9,7 +9,7 @@ export default function Genre({ genreMovieLists }: type.genreProps) {
       <Seo title={"Genre"}></Seo>
       {genreMovieLists.map((item) => (
         <MovieSwiper
-          dataList={item.list}
+          movieList={item.list}
           title={item.title}
           spaceBetween={0}
           slidesPerView={6}

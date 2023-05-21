@@ -35,7 +35,7 @@ export default function Detail({
         <p className="leading-[25px] w-1/2 text-[1.2vw]">{content}</p>
       </div>
       <MovieSwiper
-        dataList={similarResults}
+        movieList={similarResults}
         title={`movies like "${title}"`}
         spaceBetween={10}
         slidesPerView={7}
