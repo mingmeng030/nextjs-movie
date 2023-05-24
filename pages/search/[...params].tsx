@@ -91,3 +91,4 @@ export default function SearchResult() {
     </div>
   );
 }
+export async function getServerSideProps() {}

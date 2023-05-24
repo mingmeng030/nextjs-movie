@@ -34,14 +34,15 @@ export async function getServerSideProps() {
   const genreMovieLists = [];
 
   for (let i = 0; i < genreList.length; i++) {
-    const list = (
-      await (
-        await fetch(`${config.api}/api/movies/genre/${genreList[i].id}`)
-      ).json()
-    ).results;
-    genreMovieLists.push({ list: list, title: genreList[i].genre });
+    genreMovieLists.push({
+      list: (
+        await (
+          await fetch(`${config.api}/api/movies/genre/${genreList[i].id}`)
+        ).json()
+      ).results,
+      title: genreList[i].genre,
+    });
   }
-
   return {
     props: {
       genreMovieLists,

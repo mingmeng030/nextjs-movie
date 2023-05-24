@@ -8,14 +8,15 @@ import "swiper/css/navigation";
 import "swiper/css/scrollbar";
 
 import { config } from "../static/config";
-import * as type from "./types";
+import { MovieSwiperProps } from "./types";
 import styles from "./styles/MovieSwiper.module.css";
+
 export default function MovieSwiper({
   movieList,
   title,
   spaceBetween,
   slidesPerView,
-}: type.MovieSwiperProps) {
+}: MovieSwiperProps) {
   SwiperCore.use([Navigation]);
   const swiperRef = useRef<SwiperCore>();
 
@@ -34,9 +35,9 @@ export default function MovieSwiper({
         navigation
         scrollbar={{ draggable: true }}
       >
-        {movieList?.map((item, i) => {
+        {movieList?.map((item) => {
           return (
-            <SwiperSlide key={i}>
+            <SwiperSlide key={item.id}>
               <Link
                 href={{
                   pathname: `/movies/${item.title

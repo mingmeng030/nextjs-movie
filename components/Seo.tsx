@@ -1,7 +1,7 @@
 import Head from "next/head";
-import * as type from "./types";
+import { SeoProps } from "./types";
 
-export default function Seo({ title }: type.SeoProps) {
+export default function Seo({ title }: SeoProps) {
   return (
     <Head>
       <title>{title}|Next Movies</title>
