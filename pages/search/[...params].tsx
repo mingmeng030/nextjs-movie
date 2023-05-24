@@ -7,13 +7,13 @@ import Link from "next/link";
 
 import Seo from "../../components/Seo";
 import styles from "../../styles/Search.module.css";
-import * as type from "./types";
+import * as type from "../../types/searchType";
 import * as commonType from "../../types/commonType";
 import { config } from "../../static/config";
 
-export default function searchResult() {
-  const router = useRouter();
-  const keywordToShow = router.query.params[0].replace(/[+]/g, " ");
+export default function SearchResult() {
+  const Router = useRouter();
+  const keywordToShow = Router.query.params[0].replace(/[+]/g, " ");
   const bottom = useRef(null);
 
   const fetchMovies = ({ pageParam = 1 }: type.fetchMovieProps) =>
@@ -49,7 +49,7 @@ export default function searchResult() {
       {status === "error" && <p>loading fail.</p>}
       {status === "success" && data && (
         <>
-          <p>Search results for "{keywordToShow}"</p>
+          <p>Search results for &quot;{keywordToShow}&ldquo;</p>
           <p>total : {data.pages[0].data.total_results}</p>
           <div className="flexwrap">
             {data.pages.map((page) => {

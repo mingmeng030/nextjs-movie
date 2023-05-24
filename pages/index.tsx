@@ -1,6 +1,6 @@
 import Seo from "../components/Seo";
 import MovieSwiper from "../components/MovieSwiper";
-import * as type from "./types";
+import * as type from "../types/homeType";
 import { config } from "../static/config";
 
 export default function Home({

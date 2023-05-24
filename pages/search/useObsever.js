@@ -21,3 +21,5 @@ export const useObserver = ({
     return () => observer && observer.disconnect();
   }, [target, rootMargin, threshold]);
 };
+
+export default useObserver;

@@ -1,14 +1,15 @@
 import Seo from "../components/Seo";
 import MovieSwiper from "../components/MovieSwiper";
-import * as type from "./types";
+import * as type from "../types/genreType";
 import { config } from "../static/config";
 
 export default function Genre({ genreMovieLists }: type.genreProps) {
   return (
     <div>
       <Seo title={"Genre"}></Seo>
-      {genreMovieLists.map((item) => (
+      {genreMovieLists.map((item, i) => (
         <MovieSwiper
+          key={i}
           movieList={item.list}
           title={item.title}
           spaceBetween={0}

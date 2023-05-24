@@ -1,4 +1,4 @@
-import * as commonType from "../../types/commonType";
+import * as commonType from "../types/commonType";
 
 export interface movieDetailProps {
   query: {

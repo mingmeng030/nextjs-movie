@@ -1,6 +1,6 @@
 import Seo from "../../components/Seo";
 import MovieSwiper from "../../components/MovieSwiper";
-import * as type from "./types";
+import * as type from "../../types/moviesType";
 import { config } from "../../static/config";
 
 export default function Detail({
@@ -23,7 +23,7 @@ export default function Detail({
           src={`${config.videoUrl}${key}?autoplay=0`}
         />
       ) : (
-        <p>There's no video to play.</p>
+        <p>{"There's no video to play."}</p>
       )}
       <div className="flexcenter margincenter mt-[50px] w-4/5">
         {`${config.imgUrl}${imgPath}` && (

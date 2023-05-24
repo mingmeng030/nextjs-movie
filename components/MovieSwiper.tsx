@@ -34,9 +34,9 @@ export default function MovieSwiper({
         navigation
         scrollbar={{ draggable: true }}
       >
-        {movieList?.map((item) => {
+        {movieList?.map((item, i) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={i}>
               <Link
                 href={{
                   pathname: `/movies/${item.title
